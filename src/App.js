@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
 
-function App() {
+const App = () =>{
+
+  // const name = 'World'
+  const [count, setCount] = useState(0)
+  const [user, setUser] = useState('')
+
+  const increment = () =>{
+    setCount(count + 1) 
+  }
+
+  const handleOnChange = (e) => {
+    // console.log("e: ", e.target.value)
+    setUser(e.target.value)
+  }
+
+  console.log("user: ", user)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <React.Fragment>
+      <div>Count: {count}</div>
+      <button id="increment" onClick={increment}>Increment</button>
+      <br />
+      <input name="user" onChange={handleOnChange} value={user}/>
+
+    </React.Fragment>
+  
+  )
 }
 
-export default App;
+export default App
